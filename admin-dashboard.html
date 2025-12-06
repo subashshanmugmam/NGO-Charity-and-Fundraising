@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TechSummit 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-100 antialiased">
+
+    <div class="flex h-screen overflow-hidden">
+
+        <!-- Mobile Backdrop -->
+        <div id="sidebar-backdrop"
+            class="fixed inset-0 z-40 bg-gray-900/50 hidden md:hidden glass-panel backdrop-blur-sm transition-opacity">
+        </div>
+
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="w-64 bg-gray-900 text-gray-400 flex flex-col hidden md:flex fixed md:relative z-50 h-full transition-transform transform -translate-x-full md:translate-x-0">
+            <div class="h-16 flex items-center px-6 bg-gray-800">
+                <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold mr-3">TS
+                </div>
+                <span class="text-white font-bold text-lg">Admin Panel</span>
+            </div>
+
+            <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 bg-blue-600 text-white rounded-lg transition">
+                    <i class="fas fa-chart-pie w-5"></i> Overview
+                </a>
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fas fa-users w-5"></i> Attendees
+                </a>
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fas fa-microphone w-5"></i> Speakers
+                </a>
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fas fa-calendar-alt w-5"></i> Schedule
+                </a>
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fas fa-ticket-alt w-5"></i> Tickets
+                </a>
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fas fa-chart-line w-5"></i> Analytics
+                </a>
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fas fa-cog w-5"></i> Settings
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-gray-800">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-2 hover:text-white transition">
+                    <i class="fas fa-sign-out-alt w-5"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+
+            <!-- Top Header -->
+            <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 z-10">
+                <div class="flex items-center gap-4">
+                    <button id="sidebar-toggle" class="md:hidden text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <h2 class="text-xl font-bold text-gray-800">Dashboard Overview</h2>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <div class="relative hidden sm:block">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Search..."
+                            class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                    </div>
+
+                    <button id="rtl-toggle" class="text-gray-500 hover:text-blue-600 font-medium transition-colors"
+                        aria-label="Switch Direction">
+                        RTL
+                    </button>
+
+                    <button class="relative text-gray-500 hover:text-blue-600">
+                        <i class="fas fa-bell text-xl"></i>
+                        <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+
+                    <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=0D8ABC&color=fff"
+                            class="w-8 h-8 rounded-full" alt="Admin">
+                        <span class="font-medium text-sm hidden sm:block">Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Scrollable Content -->
+            <main class="flex-1 overflow-y-auto p-6">
+
+                <!-- KPI Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Total Attendees</p>
+                                <h3 class="text-3xl font-bold text-gray-900">4,250</h3>
+                            </div>
+                            <div class="p-2 bg-blue-50 text-blue-600 rounded-lg">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                        </div>
+                        <span class="text-green-500 text-sm font-medium"><i class="fas fa-arrow-up"></i> 12%</span>
+                        <span class="text-gray-400 text-xs ml-1">vs last month</span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Total Revenue</p>
+                                <h3 class="text-3xl font-bold text-gray-900">$845k</h3>
+                            </div>
+                            <div class="p-2 bg-green-50 text-green-600 rounded-lg">
+                                <i class="fas fa-dollar-sign text-xl"></i>
+                            </div>
+                        </div>
+                        <span class="text-green-500 text-sm font-medium"><i class="fas fa-arrow-up"></i> 8%</span>
+                        <span class="text-gray-400 text-xs ml-1">vs last month</span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Sessions</p>
+                                <h3 class="text-3xl font-bold text-gray-900">48</h3>
+                            </div>
+                            <div class="p-2 bg-purple-50 text-purple-600 rounded-lg">
+                                <i class="fas fa-microphone text-xl"></i>
+                            </div>
+                        </div>
+                        <span class="text-gray-500 text-sm font-medium">All set</span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Tickets Sold</p>
+                                <h3 class="text-3xl font-bold text-gray-900">85%</h3>
+                            </div>
+                            <div class="p-2 bg-orange-50 text-orange-600 rounded-lg">
+                                <i class="fas fa-ticket-alt text-xl"></i>
+                            </div>
+                        </div>
+                        <span class="text-red-500 text-sm font-medium"><i class="fas fa-arrow-down"></i> 2%</span>
+                        <span class="text-gray-400 text-xs ml-1">remaining capacity</span>
+                    </div>
+                </div>
+
+                <!-- Charts & Tables -->
+                <div class="grid lg:grid-cols-3 gap-8 mb-8">
+                    <!-- Chart Placeholder -->
+                    <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-gray-900">Registration Trends</h3>
+                            <select
+                                class="text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option>Last 7 Days</option>
+                                <option>Last 30 Days</option>
+                            </select>
+                        </div>
+                        <div
+                            class="h-64 bg-gray-50 rounded-lg flex items-center justify-center relative overflow-hidden">
+                            <!-- Simple CSS Bar Chart -->
+                            <div class="flex items-end gap-4 h-40 w-full px-8">
+                                <div class="w-full bg-blue-200 rounded-t hover:bg-blue-300 transition"
+                                    style="height: 40%"></div>
+                                <div class="w-full bg-blue-200 rounded-t hover:bg-blue-300 transition"
+                                    style="height: 60%"></div>
+                                <div class="w-full bg-blue-200 rounded-t hover:bg-blue-300 transition"
+                                    style="height: 45%"></div>
+                                <div class="w-full bg-blue-200 rounded-t hover:bg-blue-300 transition"
+                                    style="height: 70%"></div>
+                                <div class="w-full bg-blue-200 rounded-t hover:bg-blue-300 transition"
+                                    style="height: 55%"></div>
+                                <div class="w-full bg-blue-200 rounded-t hover:bg-blue-300 transition"
+                                    style="height: 80%"></div>
+                                <div class="w-full bg-blue-600 rounded-t shadow-lg" style="height: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Sessions -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="font-bold text-gray-900 mb-4">Upcoming Sessions</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg transition">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xs">
+                                    09:00
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-sm text-gray-900">Opening Keynote</h4>
+                                    <p class="text-xs text-gray-500">Main Hall • Dr. Rostova</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg transition">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-xs">
+                                    10:30
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-sm text-gray-900">Microservices Workshop</h4>
+                                    <p class="text-xs text-gray-500">Room A • David Chen</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg transition">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 font-bold text-xs">
+                                    12:00
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-sm text-gray-900">Networking Lunch</h4>
+                                    <p class="text-xs text-gray-500">Dining Hall</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 text-center text-sm text-blue-600 font-medium hover:underline">View
+                            Full Schedule</button>
+                    </div>
+                </div>
+
+                <!-- Recent Registrations Table -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="font-bold text-gray-900">Recent Registrations</h3>
+                        <button class="text-sm text-blue-600 font-medium hover:underline">View All</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-gray-50 text-gray-500">
+                                <tr>
+                                    <th class="px-6 py-3 font-medium">Name</th>
+                                    <th class="px-6 py-3 font-medium">Ticket Type</th>
+                                    <th class="px-6 py-3 font-medium">Date</th>
+                                    <th class="px-6 py-3 font-medium">Status</th>
+                                    <th class="px-6 py-3 font-medium text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Alice Freeman</td>
+                                    <td class="px-6 py-4">Professional</td>
+                                    <td class="px-6 py-4 text-gray-500">Oct 12, 2025</td>
+                                    <td class="px-6 py-4"><span
+                                            class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-gray-400 hover:text-blue-600"><i
+                                                class="fas fa-ellipsis-v"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Bob Smith</td>
+                                    <td class="px-6 py-4">Student</td>
+                                    <td class="px-6 py-4 text-gray-500">Oct 12, 2025</td>
+                                    <td class="px-6 py-4"><span
+                                            class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">Pending</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-gray-400 hover:text-blue-600"><i
+                                                class="fas fa-ellipsis-v"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Charlie Kim</td>
+                                    <td class="px-6 py-4">VIP</td>
+                                    <td class="px-6 py-4 text-gray-500">Oct 11, 2025</td>
+                                    <td class="px-6 py-4"><span
+                                            class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-gray-400 hover:text-blue-600"><i
+                                                class="fas fa-ellipsis-v"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="js/rtl-toggle.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Dashboard Sidebar Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+            const toggleBtn = document.getElementById('sidebar-toggle');
+
+            if (sidebar && toggleBtn) {
+                toggleBtn.addEventListener('click', () => {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('-translate-x-full');
+                    if (backdrop) backdrop.classList.toggle('hidden');
+                });
+
+                if (backdrop) {
+                    backdrop.addEventListener('click', () => {
+                        sidebar.classList.add('hidden');
+                        sidebar.classList.add('-translate-x-full');
+                        backdrop.classList.add('hidden');
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

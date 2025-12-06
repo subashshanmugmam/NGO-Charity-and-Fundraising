@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - TechSummit 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="font-sans text-gray-800 bg-gray-50 antialiased h-screen flex flex-col items-center justify-center text-center px-4">
+
+    <div class="max-w-lg w-full">
+        <div class="text-9xl font-extrabold text-blue-100 mb-8 animate-pulse">404</div>
+
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Page Not Found</h1>
+        <p class="text-gray-600 mb-8 text-lg">Oops! The page you are looking for might have been removed, had its name
+            changed, or is temporarily unavailable.</p>
+
+        <!-- Search -->
+        <form action="schedule.html" class="mb-8 relative max-w-sm mx-auto">
+            <input type="text" name="q" placeholder="Search for sessions..."
+                class="w-full px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
+            <button type="submit"
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-blue-600 rounded-full text-white flex items-center justify-center hover:bg-blue-700 transition">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="index.html"
+                class="px-8 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition shadow-lg">
+                Go to Homepage
+            </a>
+            <a href="contact.html"
+                class="px-8 py-3 bg-white text-gray-700 border border-gray-300 rounded-lg font-bold hover:bg-gray-50 transition">
+                Contact Support
+            </a>
+        </div>
+
+        <div class="mt-12 text-sm text-gray-500">
+            <p>&copy; 2025 TechSummit. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script src="js/rtl-toggle.js"></script>
+</body>
+
+</html>
