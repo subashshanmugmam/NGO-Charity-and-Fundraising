@@ -164,8 +164,14 @@
                 <div class="flex items-center gap-4"><a href="register.html"
                         class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-purple-500/40 transform hover:-translate-y-1 hover:scale-105 active:scale-95 text-sm">Register
                     </a>
-                    <!-- Mobile Menu Button --><button id="mobile-menu-btn"
-                        class="md:hidden text-gray-300 hover:text-white focus:outline-none"><i
+                    <!-- Mobile Menu Button -->
+                    <div class="flex items-center gap-2 md:hidden">
+                        <button id="rtl-toggle-mobile" onclick="toggleRTL(event)"
+                            class="text-gray-300 hover:text-white font-bold border border-gray-600 rounded px-2 py-1 text-sm transition-colors">
+                            <span>RTL</span>
+                        </button>
+                    </div>
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none"><i
                             class="fas fa-bars text-xl transition-transform duration-300 hover:rotate-90"></i></button>
                 </div>
             </div>
@@ -191,14 +197,7 @@
                         class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Schedule</a>
                     <a href="contact2.html"
                         class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Contact</a>
-                    <div
-                        class="flex items-center justify-between px-3 py-2 text-gray-300 font-medium bg-gray-800 rounded-md">
-                        <span>Language Direction</span>
-                        <button id="rtl-toggle-mobile" onclick="toggleRTL(event)"
-                            class="text-gray-300 hover:text-white transition">
-                            <span class="font-bold">RTL</span>
-                        </button>
-                    </div>
+
                     <div class="border-t border-gray-800 my-2 pt-2">
                         <a href="login.html"
                             class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Log
